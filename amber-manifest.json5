@@ -15,7 +15,7 @@
   },
 
   program: {
-    image: "ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.0",
+    image: "ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.1",
     entrypoint: [
       "/usr/local/bin/pibench-purple-entrypoint",
       "--host",
@@ -26,9 +26,12 @@
       "http://agent:9009",
     ],
     env: {
-      // 镜像内的 DeepSeek Provider 从 OPENAI_API_KEY 读取凭据。
+      // 显式固定模型和 Provider，避免 Amber 启动时丢失镜像默认 ENV。
       OPENAI_API_KEY: "${config.deepseek_api_key}",
       DEEPSEEK_API_KEY: "${config.deepseek_api_key}",
+      CODEX_MODEL: "deepseek-v4-pro",
+      CODEX_MODEL_PROVIDER: "deepseek",
+      CODEX_REASONING_EFFORT: "medium",
     },
     network: {
       endpoints: [
