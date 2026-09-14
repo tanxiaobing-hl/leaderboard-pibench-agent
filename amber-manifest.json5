@@ -1,0 +1,53 @@
+{
+  manifest_version: "0.1.0",
+
+  // 部署方只需要提供模型密钥；真实密钥不会写入仓库或镜像。
+  config_schema: {
+    type: "object",
+    properties: {
+      deepseek_api_key: {
+        type: "string",
+        secret: true,
+      },
+    },
+    required: ["deepseek_api_key"],
+    additionalProperties: false,
+  },
+
+  program: {
+    image: "ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.0",
+    entrypoint: [
+      "/usr/local/bin/pibench-purple-entrypoint",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "9009",
+      "--card-url",
+      "http://agent:9009",
+    ],
+    env: {
+      // 镜像内的 DeepSeek Provider 从 OPENAI_API_KEY 读取凭据。
+      OPENAI_API_KEY: "${config.deepseek_api_key}",
+      DEEPSEEK_API_KEY: "${config.deepseek_api_key}",
+    },
+    network: {
+      endpoints: [
+        {
+          name: "a2a_endpoint",
+          port: 9009,
+        },
+      ],
+    },
+  },
+
+  provides: {
+    a2a: {
+      kind: "a2a",
+      endpoint: "a2a_endpoint",
+    },
+  },
+
+  exports: {
+    a2a: "a2a",
+  },
+}
