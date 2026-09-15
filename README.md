@@ -5,7 +5,7 @@
 仓库只包含公开部署元数据，不包含 Purple Agent 的实现源码。运行镜像发布在 GitHub Container Registry：
 
 ```text
-ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.1
+ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.2
 ```
 
 ## AgentBeats 注册信息
@@ -36,7 +36,7 @@ https://raw.githubusercontent.com/tanxiaobing-hl/leaderboard-pibench-agent/refs/
 镜像是公开的，可直接拉取：
 
 ```powershell
-docker pull ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.1
+docker pull ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.2
 ```
 
 启动时通过环境变量提供 DeepSeek API Key：
@@ -44,7 +44,7 @@ docker pull ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.1
 ```powershell
 docker run --rm -p 9009:9009 `
   -e OPENAI_API_KEY="$env:DEEPSEEK_API_KEY" `
-  ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.1
+  ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.2
 ```
 
 检查 A2A Agent Card：
@@ -59,12 +59,12 @@ Invoke-RestMethod http://127.0.0.1:9009/.well-known/agent-card.json
 
 ## 镜像版本
 
-当前发布版本：`v0.1.1`
+当前发布版本：`v0.1.2`
 
 OCI 索引摘要：
 
 ```text
-sha256:a697c565526ba7e3694fb72cec2266dc621132bc05c96a0d105faf39cec47a94
+sha256:16b95e72c88fbd68426aabaab2dbe13c2d05674db8c480f2b457452203d44189
 ```
 
 ## PiBench

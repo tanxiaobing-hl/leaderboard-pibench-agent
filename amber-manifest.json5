@@ -15,7 +15,7 @@
   },
 
   program: {
-    image: "ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.1",
+    image: "ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.2",
     entrypoint: [
       "/usr/local/bin/pibench-purple-entrypoint",
       "--host",
