@@ -15,7 +15,7 @@
   },
 
   program: {
-    image: "ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.4",
+    image: "ghcr.io/tanxiaobing-hl/leaderboard-pibench-agent:v0.1.5",
     entrypoint: [
       "/usr/local/bin/pibench-purple-entrypoint",
       "--host",
@@ -31,7 +31,7 @@
       DEEPSEEK_API_KEY: "${config.deepseek_api_key}",
       CODEX_MODEL: "deepseek-v4-pro",
       CODEX_MODEL_PROVIDER: "deepseek",
-      CODEX_REASONING_EFFORT: "medium",
+      CODEX_REASONING_EFFORT: "low",
     },
     network: {
       endpoints: [
